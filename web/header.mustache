@@ -1,0 +1,351 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta http-equiv="X-UA-Compatible">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<title>Hansol Lee</title>
+
+<!-- Custom fonts for this template-->
+<link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+<link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
+<script type="text/javascript" src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+
+<!-- Custom styles for this template-->
+<link href="../vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+<link href="../css/sb-admin-2.min.css" rel="stylesheet">
+<link href="../css/custom.css" rel="stylesheet">
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        google.charts.load('current', {
+          'packages':['geochart'],
+        });
+        google.charts.setOnLoadCallback(drawRegionsMap);
+
+        function drawRegionsMap() {
+          var data = google.visualization.arrayToDataTable([
+            ['Country', 'issue'],
+            ['KR', 1],
+            ['KP', 2],
+            ['CN', 3],
+            ['JP', 1],
+            ['TW', 1],
+            ['DE', 1],
+            ['US', 1],
+            ['CP', 2],
+            ['RU', 2],
+            ['UA', 1],
+            ['IL', 1],
+            ['IR', 2],
+            ['IQ', 2],
+            ['LB', 2],
+            ['AU', 1],
+            ['CA', 1],
+            ['VN', 2],
+            ['YE', 2],
+            ['VA', 0],
+            ['BY', 0],
+            ['LA',2]
+
+          ]);
+
+          var options = {
+                    colorAxis: {minvalue:0, colors: ['white','blue','red','darkred']},
+                    backgroundColor: 'skyblue',
+                    defaultColor: 'white',
+          };
+
+          var chart = new google.visualization.GeoChart(document.getElementById('regions_div'));
+
+          chart.draw(data, options);
+        }
+    </script>
+
+    <script type="text/javascript">
+        google.charts.load('current', {'packages':['corechart']});
+        google.charts.setOnLoadCallback(drawChart);
+        function drawChart() {
+          var data = google.visualization.arrayToDataTable([
+            ['Mon', 28, 28, 38, 38],
+            ['Tue', 38, 38, 55, 55],
+            ['Wed', 55, 55, 77, 77],
+            ['Thu', 77, 77, 66, 66],
+            ['Fri', 66, 66, 22, 22],
+            ['Mon', 28, 28, 38, 38],
+            ['Tue', 38, 38, 55, 55],
+            ['Wed', 55, 55, 77, 77],
+            ['Thu', 77, 77, 66, 66],
+            ['Fri', 66, 66, 22, 22],
+            ['Mon', 28, 28, 38, 38],
+            ['Tue', 38, 38, 55, 55],
+            ['Wed', 55, 55, 77, 77],
+            ['Thu', 77, 77, 66, 66],
+            ['Fri', 66, 66, 22, 22],
+            ['Mon', 28, 28, 38, 38],
+            ['Tue', 38, 38, 55, 55],
+            ['Wed', 55, 55, 77, 77],
+            ['Thu', 77, 77, 66, 66],
+            ['Fri', 66, 66, 22, 22],
+            ['Mon', 28, 28, 38, 38],
+            ['Tue', 38, 38, 55, 55],
+            ['Wed', 55, 55, 77, 77],
+            ['Thu', 77, 77, 66, 66],
+            ['Fri', 66, 66, 22, 22],
+            ['Mon', 28, 28, 38, 38],
+            ['Tue', 38, 38, 55, 55],
+            ['Wed', 55, 55, 77, 77],
+            ['Thu', 77, 77, 66, 66],
+            ['Fri', 66, 66, 22, 22],
+            ['Mon', 28, 28, 38, 38],
+            ['Tue', 38, 38, 55, 55],
+            ['Wed', 55, 55, 77, 77],
+            ['Thu', 77, 77, 66, 66],
+            ['Fri', 66, 66, 22, 22],
+            ['Mon', 28, 28, 38, 38],
+            ['Tue', 38, 38, 55, 55],
+            ['Wed', 55, 55, 77, 77],
+            ['Thu', 77, 77, 66, 66],
+            ['Fri', 66, 66, 22, 22],
+            ['Mon', 28, 28, 38, 38],
+            ['Tue', 38, 38, 55, 55],
+            ['Wed', 55, 55, 77, 77],
+            ['Thu', 77, 77, 66, 66],
+            ['Fri', 66, 66, 22, 22],
+            ['Mon', 28, 28, 38, 38],
+            ['Tue', 38, 38, 55, 55],
+            ['Wed', 55, 55, 77, 77],
+            ['Thu', 77, 77, 66, 66],
+            ['Fri', 66, 66, 22, 22],
+            ['Mon', 28, 28, 38, 38],
+            ['Tue', 38, 38, 55, 55],
+            ['Wed', 55, 55, 77, 77],
+            ['Thu', 77, 77, 66, 66],
+            ['Fri', 66, 66, 22, 22],
+            ['Mon', 28, 28, 38, 38],
+            ['Tue', 38, 38, 55, 55],
+            ['Wed', 55, 55, 77, 77],
+            ['Thu', 77, 77, 66, 66],
+            ['Fri', 66, 66, 22, 22],
+            ['Mon', 28, 28, 38, 38],
+            ['Tue', 38, 38, 55, 55],
+            ['Wed', 55, 55, 77, 77],
+            ['Thu', 77, 77, 66, 66],
+            ['Fri', 66, 66, 22, 22],
+            ['Mon', 28, 28, 38, 38],
+            ['Tue', 38, 38, 55, 55],
+            ['Wed', 55, 55, 77, 77],
+            ['Thu', 77, 77, 66, 66],
+            ['Fri', 66, 66, 22, 22],
+            ['Mon', 28, 28, 38, 38],
+            ['Tue', 38, 38, 55, 55],
+            ['Wed', 55, 55, 77, 77],
+            ['Thu', 77, 77, 66, 66],
+            ['Fri', 66, 66, 22, 22],
+            ['Mon', 28, 28, 38, 38],
+            ['Tue', 38, 38, 55, 55],
+            ['Wed', 55, 55, 77, 77],
+            ['Thu', 77, 77, 66, 66],
+            ['Fri', 66, 66, 22, 22],
+            ['Mon', 28, 28, 38, 38],
+            ['Tue', 38, 38, 55, 55],
+            ['Wed', 55, 55, 77, 77],
+            ['Thu', 77, 77, 66, 66],
+            ['Fri', 66, 66, 22, 22],
+            ['Mon', 28, 28, 38, 38],
+            ['Tue', 38, 38, 55, 55],
+            ['Wed', 55, 55, 77, 77],
+            ['Thu', 77, 77, 66, 66],
+            ['Fri', 66, 66, 22, 22],
+            ['Mon', 28, 28, 38, 38],
+            ['Tue', 38, 38, 55, 55],
+            ['Wed', 55, 55, 77, 77],
+            ['Thu', 77, 77, 66, 66],
+            ['Fri', 66, 66, 22, 22],
+            ['Mon', 28, 28, 38, 38],
+            ['Tue', 38, 38, 55, 55],
+            ['Wed', 55, 55, 77, 77],
+            ['Thu', 77, 77, 66, 66],
+            ['Fri', 66, 66, 22, 22],
+            ['Mon', 28, 28, 38, 38],
+            ['Tue', 38, 38, 55, 55],
+            ['Wed', 55, 55, 77, 77],
+            ['Thu', 77, 77, 66, 66],
+            ['Fri', 66, 66, 22, 22],
+            ['Mon', 28, 28, 38, 38],
+            ['Tue', 38, 38, 55, 55],
+            ['Wed', 55, 55, 77, 77],
+            ['Thu', 77, 77, 66, 66],
+            ['Fri', 66, 66, 22, 22],
+            ['Mon', 28, 28, 38, 38],
+            ['Tue', 38, 38, 55, 55],
+            ['Wed', 55, 55, 77, 77],
+            ['Thu', 77, 77, 66, 66],
+            ['Fri', 66, 66, 22, 22],
+            ['Mon', 28, 28, 38, 38],
+            ['Tue', 38, 38, 55, 55],
+            ['Wed', 55, 55, 77, 77],
+            ['Thu', 77, 77, 66, 66],
+            ['Fri', 66, 66, 22, 22]
+            // Treat the first row as data.
+          ], true);
+
+          var options = {
+            legend: 'none',
+            bar: { groupWidth: '100%' }, // Remove space between bars.
+            candlestick: {
+              fallingColor: { strokeWidth: 0, fill: '#a52714' }, // red
+              risingColor: { strokeWidth: 0, fill: '#0f9d58' }   // green
+            }
+          };
+
+          var chart = new google.visualization.CandlestickChart(document.getElementById('chart_nasdaq100'));
+          chart.draw(data, options);
+        }
+    </script>
+
+    <script type="text/javascript">
+        google.charts.load('current', {'packages':['corechart']});
+        google.charts.setOnLoadCallback(drawChart);
+        function drawChart() {
+          var data = google.visualization.arrayToDataTable([
+            ['Mon', 28, 28, 38, 38],
+            ['Tue', 38, 38, 55, 55],
+            ['Wed', 55, 55, 77, 77],
+            ['Thu', 77, 77, 66, 66],
+            ['Fri', 66, 66, 22, 22],
+            ['Mon', 28, 28, 38, 38],
+            ['Tue', 38, 38, 55, 55],
+            ['Wed', 55, 55, 77, 77],
+            ['Thu', 77, 77, 66, 66],
+            ['Fri', 66, 66, 22, 22],
+            ['Mon', 28, 28, 38, 38],
+            ['Tue', 38, 38, 55, 55],
+            ['Wed', 55, 55, 77, 77],
+            ['Thu', 77, 77, 66, 66],
+            ['Fri', 66, 66, 22, 22],
+            ['Mon', 28, 28, 38, 38],
+            ['Tue', 38, 38, 55, 55],
+            ['Wed', 55, 55, 77, 77],
+            ['Thu', 77, 77, 66, 66],
+            ['Fri', 66, 66, 22, 22],
+            ['Mon', 28, 28, 38, 38],
+            ['Tue', 38, 38, 55, 55],
+            ['Wed', 55, 55, 77, 77],
+            ['Thu', 77, 77, 66, 66],
+            ['Fri', 66, 66, 22, 22],
+            ['Mon', 28, 28, 38, 38],
+            ['Tue', 38, 38, 55, 55],
+            ['Wed', 55, 55, 77, 77],
+            ['Thu', 77, 77, 66, 66],
+            ['Fri', 66, 66, 22, 22],
+            ['Mon', 28, 28, 38, 38],
+            ['Tue', 38, 38, 55, 55],
+            ['Wed', 55, 55, 77, 77],
+            ['Thu', 77, 77, 66, 66],
+            ['Fri', 66, 66, 22, 22],
+            ['Mon', 28, 28, 38, 38],
+            ['Tue', 38, 38, 55, 55],
+            ['Wed', 55, 55, 77, 77],
+            ['Thu', 77, 77, 66, 66],
+            ['Fri', 66, 66, 22, 22],
+            ['Mon', 28, 28, 38, 38],
+            ['Tue', 38, 38, 55, 55],
+            ['Wed', 55, 55, 77, 77],
+            ['Thu', 77, 77, 66, 66],
+            ['Fri', 66, 66, 22, 22],
+            ['Mon', 28, 28, 38, 38],
+            ['Tue', 38, 38, 55, 55],
+            ['Wed', 55, 55, 77, 77],
+            ['Thu', 77, 77, 66, 66],
+            ['Fri', 66, 66, 22, 22],
+            ['Mon', 28, 28, 38, 38],
+            ['Tue', 38, 38, 55, 55],
+            ['Wed', 55, 55, 77, 77],
+            ['Thu', 77, 77, 66, 66],
+            ['Fri', 66, 66, 22, 22],
+            ['Mon', 28, 28, 38, 38],
+            ['Tue', 38, 38, 55, 55],
+            ['Wed', 55, 55, 77, 77],
+            ['Thu', 77, 77, 66, 66],
+            ['Fri', 66, 66, 22, 22],
+            ['Mon', 28, 28, 38, 38],
+            ['Tue', 38, 38, 55, 55],
+            ['Wed', 55, 55, 77, 77],
+            ['Thu', 77, 77, 66, 66],
+            ['Fri', 66, 66, 22, 22],
+            ['Mon', 28, 28, 38, 38],
+            ['Tue', 38, 38, 55, 55],
+            ['Wed', 55, 55, 77, 77],
+            ['Thu', 77, 77, 66, 66],
+            ['Fri', 66, 66, 22, 22],
+            ['Mon', 28, 28, 38, 38],
+            ['Tue', 38, 38, 55, 55],
+            ['Wed', 55, 55, 77, 77],
+            ['Thu', 77, 77, 66, 66],
+            ['Fri', 66, 66, 22, 22],
+            ['Mon', 28, 28, 38, 38],
+            ['Tue', 38, 38, 55, 55],
+            ['Wed', 55, 55, 77, 77],
+            ['Thu', 77, 77, 66, 66],
+            ['Fri', 66, 66, 22, 22],
+            ['Mon', 28, 28, 38, 38],
+            ['Tue', 38, 38, 55, 55],
+            ['Wed', 55, 55, 77, 77],
+            ['Thu', 77, 77, 66, 66],
+            ['Fri', 66, 66, 22, 22],
+            ['Mon', 28, 28, 38, 38],
+            ['Tue', 38, 38, 55, 55],
+            ['Wed', 55, 55, 77, 77],
+            ['Thu', 77, 77, 66, 66],
+            ['Fri', 66, 66, 22, 22],
+            ['Mon', 28, 28, 38, 38],
+            ['Tue', 38, 38, 55, 55],
+            ['Wed', 55, 55, 77, 77],
+            ['Thu', 77, 77, 66, 66],
+            ['Fri', 66, 66, 22, 22],
+            ['Mon', 28, 28, 38, 38],
+            ['Tue', 38, 38, 55, 55],
+            ['Wed', 55, 55, 77, 77],
+            ['Thu', 77, 77, 66, 66],
+            ['Fri', 66, 66, 22, 22],
+            ['Mon', 28, 28, 38, 38],
+            ['Tue', 38, 38, 55, 55],
+            ['Wed', 55, 55, 77, 77],
+            ['Thu', 77, 77, 66, 66],
+            ['Fri', 66, 66, 22, 22],
+            ['Mon', 28, 28, 38, 38],
+            ['Tue', 38, 38, 55, 55],
+            ['Wed', 55, 55, 77, 77],
+            ['Thu', 77, 77, 66, 66],
+            ['Fri', 66, 66, 22, 22],
+            ['Mon', 28, 28, 38, 38],
+            ['Tue', 38, 38, 55, 55],
+            ['Wed', 55, 55, 77, 77],
+            ['Thu', 77, 77, 66, 66],
+            ['Fri', 66, 66, 22, 22],
+            ['Mon', 28, 28, 38, 38],
+            ['Tue', 38, 38, 55, 55],
+            ['Wed', 55, 55, 77, 77],
+            ['Thu', 77, 77, 66, 66],
+            ['Fri', 66, 66, 22, 22]
+            // Treat the first row as data.
+          ], true);
+
+          var options = {
+            legend: 'none',
+            bar: { groupWidth: '100%' }, // Remove space between bars.
+            candlestick: {
+              fallingColor: { strokeWidth: 0, fill: '#a52714' }, // red
+              risingColor: { strokeWidth: 0, fill: '#0f9d58' }   // green
+            }
+          };
+
+          var chart = new google.visualization.CandlestickChart(document.getElementById('chart_kospi200'));
+          chart.draw(data, options);
+        }
+    </script>
+</head>
+

@@ -1,0 +1,141 @@
+from airflow import DAG
+from airflow.operators.python_operator import PythonOperator
+from datetime import datetime, timedelta
+from kafka import KafkaProducer, KafkaConsumer
+import logging
+import json
+import sys
+import os
+# 현재 DAG 파일의 경로를 PYTHONPATH에 추가
+pathCheck = sys.path.append(os.path.dirname(__file__))  # DAG 파일의 경로를 추가
+logging.info(pathCheck)
+pathcCheck = sys.path.append(os.path.join(os.path.dirname(__file__), 'koreainvestment'))
+logging.info(pathCheck)
+
+# Kafka
+KAFKA_BROKER = 'localhost:9092'
+KAFKA_TOPIC = 'api_krstock_daily'
+GROUP_ID = 'default-consumer-group'
+
+def kafka_producer_task():
+    try:
+        producer = KafkaProducer(
+            bootstrap_servers=KAFKA_BROKER,
+            value_serializer=lambda v: json.dumps(v).encode('utf-8')  # JSON 직렬화
+        )
+        key = b'message_key'
+        value = {'message': 'Start API!'}
+        producer.send(KAFKA_TOPIC, key=key, value=value)
+        producer.flush()
+        producer.close()
+        logging.info(f"Sent: Key={key.decode('utf-8')}, Value={value}")
+    except Exception as e:
+        logging.error(f"Error in kafka_producer_task: {e}")
+        raise
+
+
+def kafka_consumer_task():
+    try:
+        consumer = KafkaConsumer(
+            KAFKA_TOPIC,
+            group_id=GROUP_ID,
+            bootstrap_servers=KAFKA_BROKER,
+            auto_offset_reset='earliest',
+            enable_auto_commit=True,
+            value_deserializer=lambda x: json.loads(x.decode('utf-8'))  # JSON 역직렬화
+        )
+        
+        for message in consumer:
+            key = message.key.decode('utf-8') if message.key else None
+            value = message.value  # 이미 JSON 객체로 변환됨
+            logging.info(f"Received: Key={key}, Value={value}")
+            break 
+        consumer.close()
+    except json.JSONDecodeError as e:
+        logging.error(f"JSON decoding error: {e}")
+    except Exception as e:
+        logging.error(f"Error in kafka_consumer_task: {e}")
+        raise
+
+
+
+def kr_stock_daily_api_task():
+    from get_daily_price import main
+    from connection.conn import load_db_config, connect_to_database, close_database_connection
+            
+    try:
+        config_file_path = os.getenv('CONFIG_FILE_PATH', '/root/airflow/dags/connection/config.properties')
+        # logging.info(f'### Current working directory: {os.getcwd()} ###')
+        # logging.info(f'### Config file path: {config_file_path} ###')
+
+        if not os.path.isfile(config_file_path):
+            raise FileNotFoundError(f"Configuration file not found: {config_file_path}")
+        
+        db_config = load_db_config(file_path=config_file_path)
+        connect_to_database(file_path=config_file_path)
+
+                
+    except Exception as e:
+        logging.error(f"Error in container_db_conn_task: {e}")
+        raise
+    
+    try:
+        db_data = main()
+
+        # Kafka Producer로 데이터를 전송
+        producer = KafkaProducer(bootstrap_servers=KAFKA_BROKER,
+                                 value_serializer=lambda v: json.dumps(v).encode('utf-8'))
+        producer.send(KAFKA_TOPIC, key=b'result_key', value=db_data)
+        producer.flush()
+        producer.close()
+
+    except Exception as e:
+        logging.error(f"Error API{e}")
+        raise
+    
+    # try:
+    #     connect_to_database(file_path=config_file_path)
+    #     insert_fred_data_to_db(result)
+    # except Exception as e:
+    #     logging.error(f"Error LOAD{e}")
+
+# DAG 설정
+default_args = {
+    'owner': 'airflow',
+    'depends_on_past': False,
+    'start_date': datetime(2024, 9, 23),
+    'email_on_failure': False,
+    'email_on_retry': False,
+    'retries': 1,
+    'retry_delay': timedelta(minutes=1),
+}
+
+dag = DAG(
+    'hanguk_stock_daily_api',
+    default_args=default_args,
+    description='A Kafka produce and consume DAG with key-value pairs',
+    schedule_interval='0 16 * * *',
+    catchup=False
+)
+
+# Task 정의
+produce_task = PythonOperator(
+    task_id='produce_task',
+    python_callable=kafka_producer_task,
+    dag=dag
+)
+
+consume_task = PythonOperator(
+    task_id='consume_task',
+    python_callable=kafka_consumer_task,
+    dag=dag
+)
+
+kr_stock_daily_task = PythonOperator(
+    task_id='kr_stock_daily_api_task',
+    python_callable=kr_stock_daily_api_task,
+    dag=dag
+)
+
+# Task 의존성 설정
+produce_task >> kr_stock_daily_task >> consume_task

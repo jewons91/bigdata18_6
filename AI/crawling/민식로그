@@ -1,0 +1,167 @@
+[2024-09-11T15:52:41.904+0900] {taskinstance.py:1103} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: investing_usnews_crawling.investing_news_crawling_task scheduled__2024-09-11T03:00:00+00:00 [queued]>
+[2024-09-11T15:52:41.917+0900] {taskinstance.py:1103} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: investing_usnews_crawling.investing_news_crawling_task scheduled__2024-09-11T03:00:00+00:00 [queued]>
+[2024-09-11T15:52:41.917+0900] {taskinstance.py:1308} INFO - Starting attempt 1 of 2
+[2024-09-11T15:52:41.934+0900] {taskinstance.py:1327} INFO - Executing <Task(PythonOperator): investing_news_crawling_task> on 2024-09-11 03:00:00+00:00
+[2024-09-11T15:52:41.940+0900] {standard_task_runner.py:57} INFO - Started process 75215 to run task
+[2024-09-11T15:52:41.943+0900] {standard_task_runner.py:84} INFO - Running: ['airflow', 'tasks', 'run', 'investing_usnews_crawling', 'investing_news_crawling_task', 'scheduled__2024-09-11T03:00:00+00:00', '--job-id', '37420', '--raw', '--subdir', 'DAGS_FOLDER/investingCrawling.py', '--cfg-path', '/tmp/tmpqw_r_ylg']
+[2024-09-11T15:52:41.944+0900] {standard_task_runner.py:85} INFO - Job 37420: Subtask investing_news_crawling_task
+[2024-09-11T15:52:41.989+0900] {task_command.py:410} INFO - Running <TaskInstance: investing_usnews_crawling.investing_news_crawling_task scheduled__2024-09-11T03:00:00+00:00 [running]> on host c6261541ff01
+[2024-09-11T15:52:42.063+0900] {taskinstance.py:1545} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='investing_usnews_crawling' AIRFLOW_CTX_TASK_ID='investing_news_crawling_task' AIRFLOW_CTX_EXECUTION_DATE='2024-09-11T03:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2024-09-11T03:00:00+00:00'
+[2024-09-11T15:52:42.066+0900] {taskinstance.py:1824} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/root/anaconda3/envs/ml-dev/lib/python3.10/site-packages/airflow/operators/python.py", line 181, in execute
+    return_value = self.execute_callable()
+  File "/root/anaconda3/envs/ml-dev/lib/python3.10/site-packages/airflow/operators/python.py", line 198, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/root/airflow/dags/investingCrawling.py", line 57, in investing_news_crawling_task
+    from investingCrawling.fetch_idnews_investing import process_and_compare_idnews
+  File "/root/airflow/dags/investingCrawling/fetch_idnews_investing.py", line 87
+    url_ = f'{url}{page}'
+    ^^^^
+IndentationError: expected an indented block after 'for' statement on line 86
+[2024-09-11T15:52:42.071+0900] {taskinstance.py:1345} INFO - Marking task as UP_FOR_RETRY. dag_id=investing_usnews_crawling, task_id=investing_news_crawling_task, execution_date=20240911T030000, start_date=20240911T065241, end_date=20240911T065242
+[2024-09-11T15:52:42.085+0900] {standard_task_runner.py:104} ERROR - Failed to execute job 37420 for task investing_news_crawling_task (expected an indented block after 'for' statement on line 86 (fetch_idnews_investing.py, line 87); 75215)
+[2024-09-11T15:52:42.115+0900] {local_task_job_runner.py:225} INFO - Task exited with return code 1
+[2024-09-11T15:52:42.139+0900] {taskinstance.py:2653} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2024-09-11T15:56:40.781+0900] {taskinstance.py:1103} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: investing_usnews_crawling.investing_news_crawling_task scheduled__2024-09-11T03:00:00+00:00 [queued]>
+[2024-09-11T15:56:40.807+0900] {taskinstance.py:1103} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: investing_usnews_crawling.investing_news_crawling_task scheduled__2024-09-11T03:00:00+00:00 [queued]>
+[2024-09-11T15:56:40.807+0900] {taskinstance.py:1308} INFO - Starting attempt 1 of 2
+[2024-09-11T15:56:40.838+0900] {taskinstance.py:1327} INFO - Executing <Task(PythonOperator): investing_news_crawling_task> on 2024-09-11 03:00:00+00:00
+[2024-09-11T15:56:40.848+0900] {standard_task_runner.py:57} INFO - Started process 77556 to run task
+[2024-09-11T15:56:40.852+0900] {standard_task_runner.py:84} INFO - Running: ['airflow', 'tasks', 'run', 'investing_usnews_crawling', 'investing_news_crawling_task', 'scheduled__2024-09-11T03:00:00+00:00', '--job-id', '37425', '--raw', '--subdir', 'DAGS_FOLDER/investingCrawling.py', '--cfg-path', '/tmp/tmpeyalgrx4']
+[2024-09-11T15:56:40.853+0900] {standard_task_runner.py:85} INFO - Job 37425: Subtask investing_news_crawling_task
+[2024-09-11T15:56:40.932+0900] {task_command.py:410} INFO - Running <TaskInstance: investing_usnews_crawling.investing_news_crawling_task scheduled__2024-09-11T03:00:00+00:00 [running]> on host c6261541ff01
+[2024-09-11T15:56:41.008+0900] {taskinstance.py:1545} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='investing_usnews_crawling' AIRFLOW_CTX_TASK_ID='investing_news_crawling_task' AIRFLOW_CTX_EXECUTION_DATE='2024-09-11T03:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2024-09-11T03:00:00+00:00'
+[2024-09-11T15:56:41.828+0900] {taskinstance.py:1824} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/root/anaconda3/envs/ml-dev/lib/python3.10/site-packages/airflow/operators/python.py", line 181, in execute
+    return_value = self.execute_callable()
+  File "/root/anaconda3/envs/ml-dev/lib/python3.10/site-packages/airflow/operators/python.py", line 198, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/root/airflow/dags/investingCrawling.py", line 58, in investing_news_crawling_task
+    from investingCrawling.fetch_pdnews_investing import process_and_compare_pdnews
+  File "/root/airflow/dags/investingCrawling/fetch_pdnews_investing.py", line 15, in <module>
+    from investingCrawling.insert_pdnews_to_db import insert_pdnews_to_db
+  File "/root/airflow/dags/investingCrawling/insert_pdnews_to_db.py", line 3, in <module>
+    import conn
+ModuleNotFoundError: No module named 'conn'
+[2024-09-11T15:56:41.837+0900] {taskinstance.py:1345} INFO - Marking task as UP_FOR_RETRY. dag_id=investing_usnews_crawling, task_id=investing_news_crawling_task, execution_date=20240911T030000, start_date=20240911T065640, end_date=20240911T065641
+[2024-09-11T15:56:41.863+0900] {standard_task_runner.py:104} ERROR - Failed to execute job 37425 for task investing_news_crawling_task (No module named 'conn'; 77556)
+[2024-09-11T15:56:41.912+0900] {local_task_job_runner.py:225} INFO - Task exited with return code 1
+[2024-09-11T15:56:41.951+0900] {taskinstance.py:2653} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2024-09-11T15:59:02.318+0900] {taskinstance.py:1103} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: investing_usnews_crawling.investing_news_crawling_task scheduled__2024-09-11T03:00:00+00:00 [queued]>
+[2024-09-11T15:59:02.330+0900] {taskinstance.py:1103} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: investing_usnews_crawling.investing_news_crawling_task scheduled__2024-09-11T03:00:00+00:00 [queued]>
+[2024-09-11T15:59:02.331+0900] {taskinstance.py:1308} INFO - Starting attempt 1 of 2
+[2024-09-11T15:59:02.347+0900] {taskinstance.py:1327} INFO - Executing <Task(PythonOperator): investing_news_crawling_task> on 2024-09-11 03:00:00+00:00
+[2024-09-11T15:59:02.354+0900] {standard_task_runner.py:57} INFO - Started process 78710 to run task
+[2024-09-11T15:59:02.358+0900] {standard_task_runner.py:84} INFO - Running: ['airflow', 'tasks', 'run', 'investing_usnews_crawling', 'investing_news_crawling_task', 'scheduled__2024-09-11T03:00:00+00:00', '--job-id', '37430', '--raw', '--subdir', 'DAGS_FOLDER/investingCrawling.py', '--cfg-path', '/tmp/tmpia7g5jrw']
+[2024-09-11T15:59:02.358+0900] {standard_task_runner.py:85} INFO - Job 37430: Subtask investing_news_crawling_task
+[2024-09-11T15:59:02.401+0900] {task_command.py:410} INFO - Running <TaskInstance: investing_usnews_crawling.investing_news_crawling_task scheduled__2024-09-11T03:00:00+00:00 [running]> on host c6261541ff01
+[2024-09-11T15:59:02.482+0900] {taskinstance.py:1545} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='investing_usnews_crawling' AIRFLOW_CTX_TASK_ID='investing_news_crawling_task' AIRFLOW_CTX_EXECUTION_DATE='2024-09-11T03:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2024-09-11T03:00:00+00:00'
+[2024-09-11T15:59:03.319+0900] {investingCrawling.py:65} INFO - ### Current working directory: / ###
+[2024-09-11T15:59:03.320+0900] {investingCrawling.py:66} INFO - ### Config file path: /root/airflow/dags/connection/config.properties ###
+[2024-09-11T15:59:03.320+0900] {conn.py:10} INFO - ### load_db_config 시작 ###
+[2024-09-11T15:59:03.320+0900] {conn.py:33} INFO - ### load_db_config 종료 ###
+[2024-09-11T15:59:03.321+0900] {conn.py:36} INFO - ### connect_to_database 시작 ###
+[2024-09-11T15:59:03.322+0900] {conn.py:10} INFO - ### load_db_config 시작 ###
+[2024-09-11T15:59:03.322+0900] {conn.py:33} INFO - ### load_db_config 종료 ###
+[2024-09-11T15:59:03.339+0900] {logging_mixin.py:150} INFO - MariaDB 서버에 성공적으로 연결되었습니다. 서버 버전: 10.4.34-MariaDB
+[2024-09-11T15:59:03.340+0900] {logging_mixin.py:150} INFO - 현재 사용 중인 데이터베이스: cryptoStockTrading
+[2024-09-11T15:59:03.341+0900] {conn.py:66} INFO - ### connect_to_database 종료 ###
+[2024-09-11T15:59:03.342+0900] {fetch_idnews_investing.py:26} INFO - 첫번째 SELECT문 결과: SPX
+[2024-09-11T15:59:03.343+0900] {conn.py:69} INFO - ### close_database_connection 시작 ###
+[2024-09-11T15:59:03.343+0900] {logging_mixin.py:150} INFO - MariaDB 연결이 종료되었습니다.
+[2024-09-11T15:59:03.343+0900] {conn.py:84} INFO - ### close_database_connection 종료 ###
+[2024-09-11T15:59:03.343+0900] {conn.py:36} INFO - ### connect_to_database 시작 ###
+[2024-09-11T15:59:03.343+0900] {conn.py:10} INFO - ### load_db_config 시작 ###
+[2024-09-11T15:59:03.343+0900] {conn.py:33} INFO - ### load_db_config 종료 ###
+[2024-09-11T15:59:03.351+0900] {logging_mixin.py:150} INFO - MariaDB 서버에 성공적으로 연결되었습니다. 서버 버전: 10.4.34-MariaDB
+[2024-09-11T15:59:03.352+0900] {logging_mixin.py:150} INFO - 현재 사용 중인 데이터베이스: cryptoStockTrading
+[2024-09-11T15:59:03.353+0900] {conn.py:66} INFO - ### connect_to_database 종료 ###
+[2024-09-11T15:59:03.363+0900] {conn.py:69} INFO - ### close_database_connection 시작 ###
+[2024-09-11T15:59:03.364+0900] {logging_mixin.py:150} INFO - MariaDB 연결이 종료되었습니다.
+[2024-09-11T15:59:03.364+0900] {conn.py:84} INFO - ### close_database_connection 종료 ###
+[2024-09-11T15:59:03.364+0900] {fetch_idnews_investing.py:202} INFO - ###############################################################
+[2024-09-11T15:59:03.364+0900] {fetch_idnews_investing.py:203} INFO - Empty DataFrame
+Columns: [USIDXN_CODE, GINDEX_CODE, INVEST_CODE, USNEWS_TITLE, USNEWS_CONTENT, USNEWS_DATE, USNEWS_PRESS, USNEWS_URL]
+Index: []
+[2024-09-11T15:59:03.366+0900] {fetch_idnews_investing.py:204} INFO - ###############################################################
+[2024-09-11T15:59:03.366+0900] {fetch_idnews_investing.py:84} INFO - URL, Press추출 시작
+[2024-09-11T15:59:03.437+0900] {investingCrawling.py:92} ERROR - Error API in naver_news_crawling_task: local variable 'time' referenced before assignment
+[2024-09-11T15:59:03.438+0900] {taskinstance.py:1824} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/root/anaconda3/envs/ml-dev/lib/python3.10/site-packages/airflow/operators/python.py", line 181, in execute
+    return_value = self.execute_callable()
+  File "/root/anaconda3/envs/ml-dev/lib/python3.10/site-packages/airflow/operators/python.py", line 198, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/root/airflow/dags/investingCrawling.py", line 81, in investing_news_crawling_task
+    db_data = process_and_compare_idnews(config_file_path)
+  File "/root/airflow/dags/investingCrawling/fetch_idnews_investing.py", line 310, in process_and_compare_idnews
+    data, db_df = insert_id_db(row['search_word'], row['url_start'], config_file_path)
+  File "/root/airflow/dags/investingCrawling/fetch_idnews_investing.py", line 205, in insert_id_db
+    news_df = investing_id(url_start)
+  File "/root/airflow/dags/investingCrawling/fetch_idnews_investing.py", line 89, in investing_id
+    time.sleep(randint(0, 3))  # 1초에서 5초 사이의 랜덤 지연
+UnboundLocalError: local variable 'time' referenced before assignment
+[2024-09-11T15:59:03.444+0900] {taskinstance.py:1345} INFO - Marking task as UP_FOR_RETRY. dag_id=investing_usnews_crawling, task_id=investing_news_crawling_task, execution_date=20240911T030000, start_date=20240911T065902, end_date=20240911T065903
+[2024-09-11T15:59:03.459+0900] {standard_task_runner.py:104} ERROR - Failed to execute job 37430 for task investing_news_crawling_task (local variable 'time' referenced before assignment; 78710)
+[2024-09-11T15:59:03.495+0900] {local_task_job_runner.py:225} INFO - Task exited with return code 1
+[2024-09-11T15:59:03.519+0900] {taskinstance.py:2653} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2024-09-11T16:00:24.842+0900] {taskinstance.py:1103} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: investing_usnews_crawling.investing_news_crawling_task scheduled__2024-09-11T03:00:00+00:00 [queued]>
+[2024-09-11T16:00:24.861+0900] {taskinstance.py:1103} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: investing_usnews_crawling.investing_news_crawling_task scheduled__2024-09-11T03:00:00+00:00 [queued]>
+[2024-09-11T16:00:24.861+0900] {taskinstance.py:1308} INFO - Starting attempt 1 of 2
+[2024-09-11T16:00:24.881+0900] {taskinstance.py:1327} INFO - Executing <Task(PythonOperator): investing_news_crawling_task> on 2024-09-11 03:00:00+00:00
+[2024-09-11T16:00:24.887+0900] {standard_task_runner.py:57} INFO - Started process 79499 to run task
+[2024-09-11T16:00:24.889+0900] {standard_task_runner.py:84} INFO - Running: ['airflow', 'tasks', 'run', 'investing_usnews_crawling', 'investing_news_crawling_task', 'scheduled__2024-09-11T03:00:00+00:00', '--job-id', '37437', '--raw', '--subdir', 'DAGS_FOLDER/investingCrawling.py', '--cfg-path', '/tmp/tmptg1yekms']
+[2024-09-11T16:00:24.890+0900] {standard_task_runner.py:85} INFO - Job 37437: Subtask investing_news_crawling_task
+[2024-09-11T16:00:24.931+0900] {task_command.py:410} INFO - Running <TaskInstance: investing_usnews_crawling.investing_news_crawling_task scheduled__2024-09-11T03:00:00+00:00 [running]> on host c6261541ff01
+[2024-09-11T16:00:24.996+0900] {taskinstance.py:1545} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='investing_usnews_crawling' AIRFLOW_CTX_TASK_ID='investing_news_crawling_task' AIRFLOW_CTX_EXECUTION_DATE='2024-09-11T03:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2024-09-11T03:00:00+00:00'
+[2024-09-11T16:00:25.815+0900] {investingCrawling.py:65} INFO - ### Current working directory: / ###
+[2024-09-11T16:00:25.816+0900] {investingCrawling.py:66} INFO - ### Config file path: /root/airflow/dags/connection/config.properties ###
+[2024-09-11T16:00:25.816+0900] {conn.py:10} INFO - ### load_db_config 시작 ###
+[2024-09-11T16:00:25.817+0900] {conn.py:33} INFO - ### load_db_config 종료 ###
+[2024-09-11T16:00:25.818+0900] {conn.py:36} INFO - ### connect_to_database 시작 ###
+[2024-09-11T16:00:25.818+0900] {conn.py:10} INFO - ### load_db_config 시작 ###
+[2024-09-11T16:00:25.818+0900] {conn.py:33} INFO - ### load_db_config 종료 ###
+[2024-09-11T16:00:25.827+0900] {logging_mixin.py:150} INFO - MariaDB 서버에 성공적으로 연결되었습니다. 서버 버전: 10.4.34-MariaDB
+[2024-09-11T16:00:25.829+0900] {logging_mixin.py:150} INFO - 현재 사용 중인 데이터베이스: cryptoStockTrading
+[2024-09-11T16:00:25.829+0900] {conn.py:66} INFO - ### connect_to_database 종료 ###
+[2024-09-11T16:00:25.831+0900] {fetch_idnews_investing.py:26} INFO - 첫번째 SELECT문 결과: SPX
+[2024-09-11T16:00:25.831+0900] {conn.py:69} INFO - ### close_database_connection 시작 ###
+[2024-09-11T16:00:25.832+0900] {logging_mixin.py:150} INFO - MariaDB 연결이 종료되었습니다.
+[2024-09-11T16:00:25.832+0900] {conn.py:84} INFO - ### close_database_connection 종료 ###
+[2024-09-11T16:00:25.832+0900] {conn.py:36} INFO - ### connect_to_database 시작 ###
+[2024-09-11T16:00:25.832+0900] {conn.py:10} INFO - ### load_db_config 시작 ###
+[2024-09-11T16:00:25.833+0900] {conn.py:33} INFO - ### load_db_config 종료 ###
+[2024-09-11T16:00:25.841+0900] {logging_mixin.py:150} INFO - MariaDB 서버에 성공적으로 연결되었습니다. 서버 버전: 10.4.34-MariaDB
+[2024-09-11T16:00:25.842+0900] {logging_mixin.py:150} INFO - 현재 사용 중인 데이터베이스: cryptoStockTrading
+[2024-09-11T16:00:25.843+0900] {conn.py:66} INFO - ### connect_to_database 종료 ###
+[2024-09-11T16:00:25.850+0900] {conn.py:69} INFO - ### close_database_connection 시작 ###
+[2024-09-11T16:00:25.851+0900] {logging_mixin.py:150} INFO - MariaDB 연결이 종료되었습니다.
+[2024-09-11T16:00:25.851+0900] {conn.py:84} INFO - ### close_database_connection 종료 ###
+[2024-09-11T16:00:25.851+0900] {fetch_idnews_investing.py:202} INFO - ###############################################################
+[2024-09-11T16:00:25.851+0900] {fetch_idnews_investing.py:203} INFO - Empty DataFrame
+Columns: [USIDXN_CODE, GINDEX_CODE, INVEST_CODE, USNEWS_TITLE, USNEWS_CONTENT, USNEWS_DATE, USNEWS_PRESS, USNEWS_URL]
+Index: []
+[2024-09-11T16:00:25.854+0900] {fetch_idnews_investing.py:204} INFO - ###############################################################
+[2024-09-11T16:00:25.854+0900] {fetch_idnews_investing.py:84} INFO - URL, Press추출 시작
+[2024-09-11T16:00:25.893+0900] {investingCrawling.py:92} ERROR - Error API in naver_news_crawling_task: local variable 'time' referenced before assignment
+[2024-09-11T16:00:25.894+0900] {taskinstance.py:1824} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/root/anaconda3/envs/ml-dev/lib/python3.10/site-packages/airflow/operators/python.py", line 181, in execute
+    return_value = self.execute_callable()
+  File "/root/anaconda3/envs/ml-dev/lib/python3.10/site-packages/airflow/operators/python.py", line 198, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/root/airflow/dags/investingCrawling.py", line 81, in investing_news_crawling_task
+    db_data = process_and_compare_idnews(config_file_path)
+  File "/root/airflow/dags/investingCrawling/fetch_idnews_investing.py", line 310, in process_and_compare_idnews
+    data, db_df = insert_id_db(row['search_word'], row['url_start'], config_file_path)
+  File "/root/airflow/dags/investingCrawling/fetch_idnews_investing.py", line 205, in insert_id_db
+    news_df = investing_id(url_start)
+  File "/root/airflow/dags/investingCrawling/fetch_idnews_investing.py", line 89, in investing_id
+    time.sleep(randint(0, 3))  # 1초에서 5초 사이의 랜덤 지연
+UnboundLocalError: local variable 'time' referenced before assignment
+[2024-09-11T16:00:25.900+0900] {taskinstance.py:1345} INFO - Marking task as UP_FOR_RETRY. dag_id=investing_usnews_crawling, task_id=investing_news_crawling_task, execution_date=20240911T030000, start_date=20240911T070024, end_date=20240911T070025
+[2024-09-11T16:00:25.915+0900] {standard_task_runner.py:104} ERROR - Failed to execute job 37437 for task investing_news_crawling_task (local variable 'time' referenced before assignment; 79499)
+[2024-09-11T16:00:25.945+0900] {local_task_job_runner.py:225} INFO - Task exited with return code 1
+[2024-09-11T16:00:25.966+0900] {taskinstance.py:2653} INFO - 0 downstream tasks scheduled from follow-on schedule check

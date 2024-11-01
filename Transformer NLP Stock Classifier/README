@@ -1,0 +1,49 @@
+
+# 아래 두가지는 Google Drive Big18 자료실 활용
+  압축파일명: transformer_nlp_stock_classifier_241004.zip
+
+  h5 모델(w)            파일명: best_model_6-1_.h5
+  토크나이저 폴더       폴더명: tokenizer_directory_6-1_
+
+# 깃허브 이 폴더에 업로드
+  모듈 3개
+  (+ conn 관련 2개) from connection import conn
+
+# install 정리내용
+pip install yfinance             0.2.43
+pip install tensorflow           2.10.0
+pip install transformers         4.44.2
+
+
+# Query
+CREATE TABLE TB_STOCK_KRNEWS_PREDICT(
+		GSTC_CODE			VARCHAR(20)		NOT NULL
+	,	INVEST_CODE			VARCHAR(2)		NOT NULL
+	,	PREDICT_RISE_RATE	VARCHAR(30)		NOT NULL
+	,	PREDICT_FALL_RATE	VARCHAR(30)		NOT NULL
+	,	PREDICT_TIME		DATETIME		NOT NULL
+);
+ALTER TABLE TB_STOCK_KRNEWS_PREDICT
+ADD CONSTRAINT TB_STOCK_KRNEWS_PREDICT_GSTC_CODE_FK
+FOREIGN KEY (GSTC_CODE)
+REFERENCES TB_STOCKCLASSIFY(GSTC_CODE)
+;
+ALTER TABLE TB_STOCK_KRNEWS_PREDICT
+ADD CONSTRAINT TB_STOCK_KRNEWS_PREDICT_INVEST_CODE_FK
+FOREIGN KEY (INVEST_CODE)
+REFERENCES TB_STOCKCLASSIFY(INVEST_CODE)
+;
+
+
+
+
+
+
+<웹>
+(멘트)
+08시 50분까지의 삼성전자 뉴스 데이터를 AI Model이 분석한 결과
+(가로 막대그래프)
+상승 65.73% | 하락 34.27%
+
+
+
